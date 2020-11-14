@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="mt-4">
     <TeamCard @team="team" />
      <div class="columns is-mobile is-centered">
         <div class="column is-half">

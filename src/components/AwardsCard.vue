@@ -2,7 +2,7 @@
     <div>
         <div class="columns">
             <div class="column">
-                <Button text="Prêmios" :event="loadAwards" :loading="loading" />
+                <Button text="Awards" :event="loadAwards" :loading="loading" />
             </div>
             <div class="column is-one-fifth" v-if="awards">
                 <Button :event="close" icon="times" />

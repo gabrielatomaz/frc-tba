@@ -1,8 +1,8 @@
 <template>
-    <div class="mt-4">
+    <div>
         <div class="columns is-mobile is-centered">
             <div class="column is-two-fifths">
-                <InputIcon type="text" @model="getNumber" placeholder="Digite o número do seu time" icon="robot" />
+                <InputIcon type="text" @model="getNumber" placeholder="Insert your team number" icon="robot" />
             </div>
             <Button 
                 :event="loadTeamInfos"
