@@ -16,7 +16,11 @@
                     </p>
                 </div>
             </div>
-            <button class="button is-outlined mt-3"  v-on:click="loadTeamInfos()"><i class="fas fa-search"></i></button>
+            <button :class="['button', 'is-outlined', 'mt-3', loading ? 'is-loading' : '']"
+                v-on:click="loadTeamInfos()"
+            >
+                <i class="fas fa-search"></i>
+            </button>
         </div>
         <div class="columns is-mobile is-centered">
             <div class="column is-half">
@@ -68,12 +72,17 @@ export default {
         return {
             number: '',
             team: null,
+            loading: false,
         }
     },
 
     methods: {
         async loadTeamInfos() {
+            this.loading = true
+
             this.team = await theBlueAllianceService.team(this.number)
+
+            this.loading = false
         },
     },
 }

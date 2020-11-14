@@ -2,7 +2,12 @@
     <div>
         <div class="columns">
             <div class="column">
-                <button class="button is-outlined is-fullwidth"  v-on:click="loadAwards()">Prêmios</button>
+                <button 
+                    :class="['button', 'is-outlined', 'is-fullwidth', loading ? 'is-loading' : '' ]"
+                    v-on:click="loadAwards()"
+                >
+                    Prêmios
+                </button>
             </div>
             <div class="column is-one-fifth" v-if="awards">
                 <button class="button is-outlined is-fullwidth"  v-on:click="close()"><i class="fas fa-times"></i></button>
@@ -31,12 +36,23 @@ export default {
     data() {
         return {
             awards: null,
+            loading: false,
         }
+    },
+
+    watch: {
+        number() {
+            this.awards = null
+        },
     },
 
     methods: {
         async loadAwards() {
+            this.loading = true
+
             this.awards = await theBlueAllianceService.awards(this.number)
+
+            this.loading = false
         },
 
         showAwardee(award) {

@@ -2,7 +2,12 @@
         <div>
         <div class="columns">
             <div class="column">
-                <button class="button is-outlined is-fullwidth"  v-on:click="loadRobots()">Robôs</button>
+                <button 
+                    :class="['button', 'is-outlined', 'is-fullwidth', loading ? 'is-loading' : '' ]"
+                    v-on:click="loadRobots()"
+                >
+                    Robôs
+                </button>
             </div>
             <div class="column is-one-fifth" v-if="robots">
                 <button class="button is-outlined is-fullwidth"  v-on:click="close()"><i class="fas fa-times"></i></button>
@@ -31,12 +36,23 @@ export default {
     data() {
         return {
             robots: null,
+            loading: false,
         }
+    },
+    
+    watch: {
+        number() {
+            this.robots = null
+        },
     },
 
     methods: {
         async loadRobots() {
+            this.loading = true
+
             this.robots = await theBlueAllianceService.robots(this.number)
+
+            this.loading = false
         },
 
         close() {

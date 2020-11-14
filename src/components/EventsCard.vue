@@ -2,7 +2,12 @@
     <div>
         <div class="columns">
             <div class="column">
-                <button class="button is-outlined is-fullwidth"  v-on:click="loadEvents()">Eventos</button>
+                <button 
+                    :class="['button', 'is-outlined', 'is-fullwidth', loading ? 'is-loading' : '']"
+                    v-on:click="loadEvents()"
+                >
+                    Eventos
+                </button>
             </div>
             <div class="column is-one-fifth" v-if="events">
                 <button class="button is-outlined is-fullwidth"  v-on:click="close()"><i class="fas fa-times"></i></button>
@@ -31,12 +36,23 @@ export default {
     data() {
         return {
             events: null,
+            loading: false,
         }
+    },
+
+    watch: {
+        number() {
+            this.events = null
+        },
     },
 
     methods: {
         async loadEvents() {
+            this.loading = true
+
             this.events = await theBlueAllianceService.events(this.number)
+
+            this.loading = false
         },
 
         close() {
