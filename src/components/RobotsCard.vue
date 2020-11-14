@@ -2,12 +2,7 @@
         <div>
         <div class="columns">
             <div class="column">
-                <button 
-                    :class="['button', 'is-outlined', 'is-fullwidth', loading ? 'is-loading' : '' ]"
-                    v-on:click="loadRobots()"
-                >
-                    Robôs
-                </button>
+                <Button text="Robôs" :event="loadRobots" :loading="loading" />
             </div>
             <div class="column is-one-fifth" v-if="robots">
                 <button class="button is-outlined is-fullwidth"  v-on:click="close()"><i class="fas fa-times"></i></button>
@@ -25,9 +20,12 @@
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
+import Button from './Button'
 
 export default {
     name: 'RobotsCard',
+
+    components: { Button },
 
     props: {
         number: String,
