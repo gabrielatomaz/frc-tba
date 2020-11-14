@@ -20,7 +20,7 @@
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
-import { Button } from './index'
+import Button from './Button'
 
 export default {
     name: 'RobotsCard',

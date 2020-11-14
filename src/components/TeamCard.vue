@@ -32,7 +32,8 @@
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
-import { Button, InputIcon } from './index'
+import { InputIcon } from './index'
+import Button from './Button'
 
 export default {
     name: 'TeamCard',

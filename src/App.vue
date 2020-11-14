@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { TeamCard, AwardsCard, EventsCard, RobotsCard } from './components/index'
+import { TeamCard, AwardsCard, EventsCard, RobotsCard } from './components'
 
 export default {
   name: 'App',
