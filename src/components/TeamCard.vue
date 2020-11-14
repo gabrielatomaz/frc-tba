@@ -2,19 +2,7 @@
     <div class="mt-4">
         <div class="columns is-mobile is-centered">
             <div class="column is-two-fifths">
-                <div class="field">
-                    <p class="control has-icons-left">
-                        <input 
-                            class="input" 
-                            type="text" 
-                            placeholder="Digite o número do seu time"
-                            v-model="number"
-                        />
-                        <span class="icon is-small is-left">
-                        <i class="fas fa-robot"></i>
-                        </span>
-                    </p>
-                </div>
+                <InputIcon type="text" @model="getNumber" placeholder="Digite o número do seu time" icon="robot" />
             </div>
             <Button 
                 :event="loadTeamInfos"
@@ -37,19 +25,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mt-2" v-if="team">
-                    <div class="card-content">
-                        <div class="column is-full">
-                            <AwardsCard :number="number" />
-                        </div>
-                        <div class="column is-full">
-                            <EventsCard :number="number" />
-                        </div>
-                        <div class="column is-full">
-                            <RobotsCard :number="number" />
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -57,16 +32,14 @@
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
-import { AwardsCard, EventsCard, RobotsCard, Button } from './index.js'
+import { Button, InputIcon } from './index'
 
 export default {
     name: 'TeamCard',
 
     components: { 
-        AwardsCard,
-        EventsCard,
-        RobotsCard,
         Button,
+        InputIcon,
     },
 
     data() {
@@ -84,6 +57,12 @@ export default {
             this.team = await theBlueAllianceService.team(this.number)
 
             this.loading = false
+
+            this.$emit('team', this.team)
+        },
+
+        getNumber(value) {
+            this.number = value
         },
     },
 }
