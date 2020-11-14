@@ -9,7 +9,7 @@ Simple Vue App that uses the The Blue Alliance Api to list informations about a 
 
 ## Views
 
-![alt text](https://i.imgur.com/9I34OEY.png)
+![alt text](https://i.imgur.com/UkWDNxI.png)
 ![alt text](https://i.imgur.com/J4Qp3r8.png)
 ![alt text](https://i.imgur.com/yBtDIck.png)
 
