@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TeamCard from './components/TeamCard.vue'
+import { TeamCard } from './components/index.js'
 
 export default {
   name: 'App',

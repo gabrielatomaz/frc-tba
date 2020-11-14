@@ -1,10 +1,9 @@
 <template>
         <button 
-            :class="['button', 'is-outlined', 'is-fullwidth', isLoading]"
+            :class="['button', 'is-outlined', isFullWidth, isLoading]"
             @click="event"
-        >
-            {{ text }}
-        </button>
+            v-html="text || hasIcon"
+        />
 </template>
 
 <script>
@@ -14,7 +13,6 @@ export default {
     props: {
         text: { 
             type: String,
-            required: true,
         },
         event: {
             type: Function,
@@ -23,6 +21,13 @@ export default {
         loading: {
             type: Boolean,
             default: false,
+        },
+        icon: {
+            type: String,
+        },
+        fullWidth: {
+            type: Boolean,
+            default: true,
         }
     },
 
@@ -30,6 +35,14 @@ export default {
         isLoading() {
             return this.loading ? 'is-loading' : ''
         },
+
+        isFullWidth() {
+            return this.fullWidth ? 'is-fullwidth' : ''
+        },
+
+        hasIcon() {
+            return this.icon ? `<i class="fas fa-${this.icon}"></i>` : ''
+        }
     },
 }
 </script>

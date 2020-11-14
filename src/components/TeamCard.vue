@@ -16,11 +16,13 @@
                     </p>
                 </div>
             </div>
-            <button :class="['button', 'is-outlined', 'mt-3', loading ? 'is-loading' : '']"
-                v-on:click="loadTeamInfos()"
-            >
-                <i class="fas fa-search"></i>
-            </button>
+            <Button 
+                :event="loadTeamInfos"
+                :loading="loading" 
+                icon="search" 
+                class="mt-3" 
+                :fullWidth="false" 
+            />
         </div>
         <div class="columns is-mobile is-centered">
             <div class="column is-half">
@@ -55,9 +57,7 @@
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
-import AwardsCard from './AwardsCard'
-import EventsCard from './EventsCard'
-import RobotsCard from './RobotsCard'
+import { AwardsCard, EventsCard, RobotsCard, Button } from './index.js'
 
 export default {
     name: 'TeamCard',
@@ -66,6 +66,7 @@ export default {
         AwardsCard,
         EventsCard,
         RobotsCard,
+        Button,
     },
 
     data() {
