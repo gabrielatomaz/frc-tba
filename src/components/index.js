@@ -1,11 +1,15 @@
-import AwardsCard from './AwardsCard.vue'
-import EventsCard from './EventsCard.vue'
-import RobotsCard from './RobotsCard.vue'
-import InputIcon from './InputIcon.vue'
-import TeamCard from './TeamCard.vue'
-import Button from './Button.vue'
+import TheBlueAllianceResponseList from './TheBlueAllianceResponseList'
+import ErrorMessage from './ErrorMessage'
+import AwardsCard from './AwardsCard'
+import EventsCard from './EventsCard'
+import RobotsCard from './RobotsCard'
+import InputIcon from './InputIcon'
+import TeamCard from './TeamCard'
+import Button from './Button'
 
 export { 
+    TheBlueAllianceResponseList,
+    ErrorMessage,
     AwardsCard,
     EventsCard, 
     RobotsCard, 

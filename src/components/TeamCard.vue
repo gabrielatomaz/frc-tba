@@ -14,6 +14,11 @@
         </div>
         <div class="columns is-mobile is-centered">
             <div class="column is-half">
+                <ErrorMessage 
+                    v-if="showErrorMessage"
+                    message="I'm sorry, I couldn't find a team with this number."
+                    @close="close" 
+                />
                 <div class="card">
                     <div class="card-content">
                         <div class="content" v-if="!team">
@@ -32,7 +37,7 @@
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
-import { InputIcon } from './index'
+import { InputIcon, ErrorMessage } from './index'
 import Button from './Button'
 
 export default {
@@ -41,6 +46,7 @@ export default {
     components: { 
         Button,
         InputIcon,
+        ErrorMessage,
     },
 
     data() {
@@ -48,6 +54,7 @@ export default {
             number: '',
             team: null,
             loading: false,
+            showErrorMessage: false,
         }
     },
 
@@ -55,15 +62,23 @@ export default {
         async loadTeamInfos() {
             this.loading = true
 
-            this.team = await theBlueAllianceService.team(this.number)
-
+            try {
+                this.team = await theBlueAllianceService.team(this.number)
+                
+                this.$emit('team', this.team)
+            } catch(error) {
+                this.showErrorMessage = true
+            }
+            
             this.loading = false
-
-            this.$emit('team', this.team)
         },
 
         getNumber(value) {
             this.number = value
+        },
+
+        close() {
+            this.showErrorMessage = false
         },
     },
 }

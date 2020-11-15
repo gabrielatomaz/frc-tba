@@ -9,23 +9,28 @@
             </div>
         </div>
         <div v-if="robots">
-            <ul>
+            <TheBlueAllianceResponseList :list="mapRobots" />
+            <!-- <ul>
                 <li v-for="robot in robots" :key="robot.key">
                     {{ robot.year }} - {{ robot.robot_name }}
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 </template>
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
+import { TheBlueAllianceResponseList } from './'
 import Button from './Button'
 
 export default {
     name: 'RobotsCard',
 
-    components: { Button },
+    components: { 
+        TheBlueAllianceResponseList,
+        Button,
+    },
 
     props: {
         number: Number,
@@ -36,6 +41,17 @@ export default {
             robots: null,
             loading: false,
         }
+    },
+
+    computed: {
+        mapRobots() {
+            return this.robots
+                .map(({ key, year, robot_name }) => ({
+                    key,
+                    text: robot_name,
+                    year,
+                }))
+        },
     },
     
     watch: {

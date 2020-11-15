@@ -9,23 +9,23 @@
             </div>
         </div>
         <div v-if="events">
-            <ul>
-                <li v-for="event in events" :key="event.first_event_id">
-                    {{ event.year }} - {{ event.name }} - {{ event.city }} ({{ event.country }})
-                </li>
-            </ul>
+            <TheBlueAllianceResponseList :list="mapEvents" />
         </div>
     </div>
 </template>
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
+import { TheBlueAllianceResponseList } from './'
 import Button from './Button'
 
 export default {
     name: 'EventsCard',
 
-    components: { Button },
+    components: { 
+        Button,
+        TheBlueAllianceResponseList,
+    },
 
     props: {
         number: Number,
@@ -36,6 +36,27 @@ export default {
             events: null,
             loading: false,
         }
+    },
+
+    computed: {
+        mapEvents() {
+            return this.events
+                .map(({ 
+                    year,
+                    name,
+                    city,
+                    country,
+                    first_event_id 
+                }) => ({
+                    key: first_event_id,
+                    year,
+                    text: name,
+                    address: {
+                        country,
+                        city,
+                    },
+                }))
+        },
     },
 
     watch: {

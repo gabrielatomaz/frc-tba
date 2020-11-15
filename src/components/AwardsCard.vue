@@ -9,23 +9,23 @@
             </div>
         </div>
         <div v-if="awards">
-            <ul>
-                <li v-for="award in awards" :key="award.event_key + award.award_type">
-                    {{ award.year }} - {{ award.name }} {{ showAwardee(award) }}
-                </li>
-            </ul>
+            <TheBlueAllianceResponseList :list="mapAwards" />
         </div>
     </div>
 </template>
 
 <script>
 import theBlueAllianceService from '../services/theBlueAllianceService'
+import { TheBlueAllianceResponseList } from './'
 import Button from './Button'
 
 export default {
     name: 'AwardsCard',
 
-    components: { Button },
+    components: { 
+        TheBlueAllianceResponseList,
+        Button,
+    },
 
     props: {
         number: Number,
@@ -35,6 +35,23 @@ export default {
         return {
             awards: null,
             loading: false,
+        }
+    },
+    
+    computed: {
+        mapAwards() {
+            return this.awards.
+                map(({
+                    year,
+                    name,
+                    event_key,
+                    award_type,
+                    recipient_list,
+                 }) => ({
+                    key: award_type + event_key,
+                    text: `${name} ${this.showAwardee(recipient_list)}`,
+                    year,
+                }))
         }
     },
 
@@ -53,10 +70,8 @@ export default {
             this.loading = false
         },
 
-        showAwardee(award) {
-            const { recipient_list } = award
-
-            const awardee = recipient_list.map(({ awardee }) => awardee)
+        showAwardee(recipientList) {
+            const awardee = recipientList.map(({ awardee }) => awardee)
 
             return awardee[0] ? `(${awardee})` : ''
         },
