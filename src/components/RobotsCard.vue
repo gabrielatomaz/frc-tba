@@ -10,11 +10,6 @@
         </div>
         <div v-if="robots">
             <TheBlueAllianceResponseList :list="mapRobots" />
-            <!-- <ul>
-                <li v-for="robot in robots" :key="robot.key">
-                    {{ robot.year }} - {{ robot.robot_name }}
-                </li>
-            </ul> -->
         </div>
     </div>
 </template>
