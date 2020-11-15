@@ -11,7 +11,7 @@
         <div v-if="awards">
             <ul>
                 <li v-for="award in awards" :key="award.event_key + award.award_type">
-                    {{ award.name }} {{ showAwardee(award) }} - {{ award.year }} 
+                    {{ award.year }} - {{ award.name }} {{ showAwardee(award) }}
                 </li>
             </ul>
         </div>

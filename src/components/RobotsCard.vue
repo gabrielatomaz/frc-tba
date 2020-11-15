@@ -11,7 +11,7 @@
         <div v-if="robots">
             <ul>
                 <li v-for="robot in robots" :key="robot.key">
-                    {{ robot.robot_name }} - {{ robot.year }}
+                    {{ robot.year }} - {{ robot.robot_name }}
                 </li>
             </ul>
         </div>

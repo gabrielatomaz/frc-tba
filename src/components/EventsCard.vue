@@ -11,7 +11,7 @@
         <div v-if="events">
             <ul>
                 <li v-for="event in events" :key="event.first_event_id">
-                    {{ event.name }} - {{ event.city }} ({{ event.country }})
+                    {{ event.year }} - {{ event.name }} - {{ event.city }} ({{ event.country }})
                 </li>
             </ul>
         </div>

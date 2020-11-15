@@ -11,7 +11,7 @@ Simple Vue App that uses the The Blue Alliance Api to list informations about a 
 
 ![alt text](https://i.imgur.com/UkWDNxI.png)
 ![alt text](https://i.imgur.com/J4Qp3r8.png)
-![alt text](https://i.imgur.com/yBtDIck.png)
+![alt text](https://i.imgur.com/Nw83vcR.png)
 
 
 ### Project setup
