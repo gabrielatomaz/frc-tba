@@ -28,7 +28,7 @@ export default {
     components: { Button },
 
     props: {
-        number: String,
+        number: Number,
     },
 
     data() {
