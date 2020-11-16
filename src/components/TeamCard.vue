@@ -66,7 +66,7 @@ export default {
                 this.team = await theBlueAllianceService.team(this.number)
                 
                 this.$emit('team', this.team)
-            } catch(error) {
+            } catch (error) {
                 this.showErrorMessage = true
             }
             
