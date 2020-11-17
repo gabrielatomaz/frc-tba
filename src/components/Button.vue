@@ -28,7 +28,7 @@ export default {
         fullWidth: {
             type: Boolean,
             default: true,
-        }
+        },
     },
 
     computed: {
@@ -42,7 +42,7 @@ export default {
 
         hasIcon() {
             return this.icon ? `<i class="fas fa-${this.icon}"></i>` : ''
-        }
+        },
     },
 }
 </script>

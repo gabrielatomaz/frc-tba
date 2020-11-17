@@ -20,14 +20,13 @@ export default {
     methods: {
         hasAddress(item) {
             const { address } = item
-            
             if (!address) return
 
             const { country, city } = address
+            if(!country || !city) return
             
             return `- ${city} (${country})`
         },
-    }
-
+    },
 }
 </script>

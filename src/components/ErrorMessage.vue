@@ -13,13 +13,13 @@ export default {
         message: {
             type: String,
             required: true,
-        }
+        },
     },
 
     methods: {
         close() {
             this.$emit('close')
-        }
+        },
     },
 }
 </script>

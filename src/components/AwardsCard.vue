@@ -52,7 +52,7 @@ export default {
                     text: `${name} ${this.showAwardee(recipient_list)}`,
                     year,
                 }))
-        }
+        },
     },
 
     watch: {
@@ -80,6 +80,5 @@ export default {
             this.awards = null
         },
     },
-
 }
 </script>
